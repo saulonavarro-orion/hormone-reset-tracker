@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hormone Reset — The 30-Day Metabolic Protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --ink:       #0d0a08;
+  --ink-2:     #1a1410;
+  --ink-3:     #261e18;
+  --ivory:     #f5ede0;
+  --ivory-dim: #c8b49a;
+  --ivory-muted:#7a6b5c;
+  --rose:      #c47d63;
+  --rose-bright:#d98e74;
+  --rose-dim:  #8a5040;
+  --rose-glow: rgba(196,125,99,0.18);
+  --gold:      #c9a96e;
+  --gold-dim:  rgba(201,169,110,0.15);
+  --sage:      #6e9e7a;
+  --sage-dim:  rgba(110,158,122,0.12);
+  --border:    rgba(245,237,224,0.08);
+  --border-hi: rgba(245,237,224,0.14);
+  --glass:     rgba(26,20,16,0.72);
+  --r-s: 16px; --r-m: 20px; --r-l: 28px;
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { -webkit-font-smoothing:antialiased; scroll-behavior:smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* grain overlay */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+}
+
+/* ═══════════════════════════════════════
+   SCREENS
+═══════════════════════════════════════ */
+.screen { display:none; min-height:100vh; position:relative; z-index:1; }
+.screen.active { display:flex; flex-direction:column; }
+
+/* ═══════════════════════════════════════
+   WELCOME
+═══════════════════════════════════════ */
+#welcome {
+  align-items:center; justify-content:center;
+  padding:56px 28px 48px;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+
+/* Ambient glow */
+.w-orb {
+  position:absolute; border-radius:50%;
+  filter:blur(80px); pointer-events:none;
+}
+.w-orb-1 {
+  width:420px; height:420px;
+  background:radial-gradient(circle, rgba(196,125,99,0.14) 0%, transparent 70%);
+  top:-80px; right:-100px;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.w-orb-2 {
+  width:340px; height:340px;
+  background:radial-gradient(circle, rgba(201,169,110,0.10) 0%, transparent 70%);
+  bottom:-60px; left:-80px;
+  animation: orbFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat {
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-20px) scale(1.04);}
+}
+
+.w-inner {
+  position:relative; z-index:2;
+  max-width:440px; width:100%;
+  animation: fadeUp .9s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.w-monogram {
+  width:80px; height:80px; margin:0 auto 28px;
+  border-radius:22px;
+  background:linear-gradient(145deg, #2a1f18, #1a1410);
+  border:1px solid var(--border-hi);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(196,125,99,.12), inset 0 1px 0 rgba(245,237,224,.06);
+}
+.w-monogram::after {
+  content:'';
+  position:absolute; inset:0; border-radius:22px;
+  background:linear-gradient(145deg, rgba(245,237,224,.07) 0%, transparent 60%);
+}
+.w-monogram-letter {
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.2rem; font-weight:300; color:var(--rose-bright);
+  position:relative; z-index:1;
+}
+
+.w-label {
+  font-size:10.5px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ivory-muted); margin-bottom:24px;
+}
+
+#welcome h1 {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(2.6rem, 7vw, 3.6rem);
+  font-weight:300; line-height:1.14;
+  color:var(--ivory); margin-bottom:22px;
+  letter-spacing:-.01em;
+}
+#welcome h1 em { font-style:italic; color:var(--rose-bright); font-weight:300; }
+#welcome h1 strong { font-weight:500; }
+
+.w-sub {
+  font-size:.96rem; line-height:1.82;
+  color:var(--ivory-dim); margin-bottom:36px;
+  font-weight:300;
+}
+.w-sub em { color:var(--ivory); font-style:normal; font-weight:400; }
+
+/* Trial badge */
+.w-trial {
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--gold-dim);
+  border:1px solid rgba(201,169,110,.22);
+  border-radius:12px; padding:11px 20px;
+  font-size:.82rem; color:var(--ivory-dim);
+  margin-bottom:24px;
+}
+.w-trial strong { color:var(--gold); font-weight:500; }
+.w-trial-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:.6; }
+
+/* CTA */
+.btn-primary {
+  display:block; width:100%;
+  background:linear-gradient(145deg, #c98468, #b87055);
+  color:var(--ivory); border:none;
+  padding:17px 32px; border-radius:14px;
+  font-family:'DM Sans', sans-serif;
+  font-size:.95rem; font-weight:500;
+  letter-spacing:.03em; cursor:pointer;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:0 8px 32px rgba(196,125,99,.3), 0 1px 0 rgba(245,237,224,.08) inset;
+  margin-bottom:12px; position:relative; overflow:hidden;
+}
+.btn-primary::after {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.06) 0%, transparent 100%);
+  border-radius:14px; pointer-events:none;
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(196,125,99,.38); }
+.btn-primary:active { transform:scale(.98); }
+
+.btn-ghost {
+  display:block; width:100%;
+  background:transparent;
+  border:1px solid var(--border-hi);
+  color:var(--ivory-muted); padding:14px 32px;
+  border-radius:14px; font-family:'DM Sans', sans-serif;
+  font-size:.9rem; cursor:pointer; transition:all .2s;
+}
+.btn-ghost:hover { border-color:rgba(196,125,99,.3); color:var(--rose-bright); }
+
+/* Stats row */
+.w-stats {
+  display:flex; justify-content:center; gap:28px;
+  margin-top:36px; padding-top:28px;
+  border-top:1px solid var(--border);
+}
+.ws { text-align:center; }
+.ws-n {
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem; font-weight:400; color:var(--rose-bright);
+  display:block; line-height:1;
+}
+.ws-l { font-size:.72rem; color:var(--ivory-muted); font-weight:300; letter-spacing:.05em; margin-top:4px; display:block; }
+
+/* ═══════════════════════════════════════
+   ONBOARDING
+═══════════════════════════════════════ */
+#onboarding {
+  align-items:center; justify-content:center;
+  padding:64px 28px 48px;
+}
+.ob-wrap { max-width:420px; width:100%; }
+
+.ob-track {
+  height:2px; background:var(--border);
+  border-radius:2px; margin-bottom:52px;
+}
+.ob-track-fill {
+  height:100%;
+  background:linear-gradient(90deg, var(--rose), var(--gold));
+  border-radius:2px; transition:width .5s cubic-bezier(.22,1,.36,1);
+}
+
+.ob-step { display:none; animation:fadeUp .5s cubic-bezier(.22,1,.36,1) both; }
+.ob-step.active { display:block; }
+
+.ob-num { font-size:.75rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--ivory-muted); margin-bottom:14px; }
+
+.ob-step h2 {
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem; font-weight:300; line-height:1.22;
+  color:var(--ivory); margin-bottom:8px;
+}
+
+.ob-hint { font-size:.85rem; color:var(--ivory-muted); line-height:1.7; margin-bottom:28px; }
+
+/* Name input */
+.field {
+  width:100%; background:var(--ink-3);
+  border:1px solid var(--border-hi);
+  border-radius:14px; padding:16px 20px;
+  font-family:'DM Sans', sans-serif;
+  font-size:.97rem; color:var(--ivory); outline:none;
+  transition:border-color .2s, box-shadow .2s;
+  margin-bottom:8px;
+}
+.field:focus { border-color:rgba(196,125,99,.5); box-shadow:0 0 0 3px rgba(196,125,99,.08); }
+.field::placeholder { color:var(--ivory-muted); }
+
+/* Options */
+.ob-opts { display:grid; gap:9px; }
+
+.ob-opt {
+  background:var(--ink-2);
+  border:1px solid var(--border);
+  border-radius:14px; padding:15px 18px;
+  display:flex; align-items:flex-start; gap:14px;
+  cursor:pointer;
+  font-family:'DM Sans', sans-serif;
+  font-size:.9rem; color:var(--ivory-dim);
+  transition:all .2s; text-align:left;
+}
+.ob-opt:hover { border-color:var(--border-hi); background:var(--ink-3); color:var(--ivory); }
+.ob-opt.on { border-color:rgba(196,125,99,.45); background:rgba(196,125,99,.07); color:var(--ivory); }
+.ob-opt .oi { font-size:1.2rem; flex-shrink:0; margin-top:1px; }
+.ob-opt .ot strong { display:block; font-weight:500; font-size:.9rem; color:var(--ivory); margin-bottom:2px; }
+.ob-opt .ot span { font-size:.76rem; color:var(--ivory-muted); font-weight:300; }
+.ob-opt.on .ot span { color:var(--rose-bright); opacity:.75; }
+
+.ob-nav { display:flex; gap:10px; margin-top:28px; }
+.ob-back {
+  background:var(--ink-2); border:1px solid var(--border);
+  color:var(--ivory-muted); padding:13px 20px;
+  border-radius:12px; font-family:'DM Sans', sans-serif;
+  font-size:.88rem; cursor:pointer; transition:all .2s;
+}
+.ob-back:hover { border-color:var(--border-hi); color:var(--ivory); }
+.ob-next {
+  flex:1; background:linear-gradient(145deg, #c98468, #b87055);
+  color:var(--ivory); border:none; padding:14px 24px;
+  border-radius:12px; font-family:'DM Sans', sans-serif;
+  font-size:.93rem; font-weight:500; cursor:pointer;
+  box-shadow:0 6px 20px rgba(196,125,99,.28);
+  transition:all .2s;
+}
+.ob-next:hover { transform:translateY(-1px); box-shadow:0 10px 28px rgba(196,125,99,.36); }
+
+/* ═══════════════════════════════════════
+   APP CHROME
+═══════════════════════════════════════ */
+#app { background:var(--ink); }
+
+.app-bar {
+  background:rgba(13,10,8,.92);
+  backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  padding:14px 22px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:60;
+}
+
+.app-wm {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.22rem; font-weight:400;
+  color:var(--ivory); letter-spacing:.02em;
+}
+.app-wm span { color:var(--rose-bright); font-style:italic; }
+
+.app-badges { display:flex; gap:8px; }
+.badge {
+  font-size:11px; font-weight:500;
+  padding:4px 12px; border-radius:20px;
+  letter-spacing:.04em;
+}
+.badge-day { background:rgba(196,125,99,.15); color:var(--rose-bright); border:1px solid rgba(196,125,99,.2); }
+.badge-fire { background:rgba(201,169,110,.12); color:var(--gold); border:1px solid rgba(201,169,110,.18); }
+
+.app-body { max-width:520px; margin:0 auto; padding:22px 18px 96px; }
+
+/* ── Tabs ── */
+.tab-pane { display:none; }
+.tab-pane.active { display:block; animation:fadeUp .4s cubic-bezier(.22,1,.36,1) both; }
+
+/* ── Cards ── */
+.card {
+  background:var(--ink-2);
+  border:1px solid var(--border);
+  border-radius:var(--r-l);
+  padding:22px 22px;
+  margin-bottom:16px;
+  box-shadow:0 4px 24px rgba(0,0,0,.3);
+  position:relative; overflow:hidden;
+}
+
+.card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(245,237,224,.07), transparent);
+}
+
+/* ── Greeting ── */
+.greet-card {
+  background:linear-gradient(135deg, var(--ink-3) 0%, #1e1510 100%);
+  border-radius:var(--r-l); padding:24px;
+  margin-bottom:16px;
+  border:1px solid var(--border);
+  box-shadow:0 4px 32px rgba(0,0,0,.4);
+  position:relative; overflow:hidden;
+}
+.greet-card::after {
+  content:'';
+  position:absolute; top:-40px; right:-40px;
+  width:200px; height:200px;
+  background:radial-gradient(circle, rgba(196,125,99,.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.greet-name {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.7rem; font-weight:300;
+  color:var(--ivory); margin-bottom:4px; line-height:1.2;
+}
+.greet-name em { font-style:italic; color:var(--rose-bright); }
+.greet-sub { font-size:.82rem; color:var(--ivory-muted); font-weight:300; margin-bottom:16px; }
+
+.week-chip {
+  display:inline-flex; align-items:center; gap:9px;
+  background:rgba(245,237,224,.05);
+  border:1px solid var(--border-hi);
+  border-radius:10px; padding:9px 14px;
+}
+.wc-pip {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--rose-bright);
+  box-shadow:0 0 0 3px rgba(196,125,99,.2);
+  flex-shrink:0;
+}
+.wc-text { font-size:.8rem; color:var(--ivory-dim); }
+.wc-text strong { color:var(--rose-bright); font-weight:500; }
+
+/* ── Trial bar ── */
+.trial-bar {
+  background:linear-gradient(135deg, rgba(201,169,110,.1), rgba(196,125,99,.07));
+  border:1px solid rgba(201,169,110,.2);
+  border-radius:var(--r-m); padding:14px 18px;
+  margin-bottom:16px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.tb-t strong { display:block; font-size:.84rem; font-weight:500; color:var(--gold); margin-bottom:2px; }
+.tb-t span { font-size:.75rem; color:var(--ivory-muted); font-weight:300; }
+.tb-btn {
+  background:linear-gradient(145deg, #c98468, #b87055);
+  color:var(--ivory); border:none;
+  padding:9px 16px; border-radius:10px;
+  font-family:'DM Sans', sans-serif;
+  font-size:.78rem; font-weight:500;
+  cursor:pointer; white-space:nowrap; flex-shrink:0;
+  box-shadow:0 4px 14px rgba(196,125,99,.3);
+  transition:all .2s;
+}
+.tb-btn:hover { transform:translateY(-1px); }
+
+/* ── Insight ── */
+.insight-card {
+  background:var(--ink-2);
+  border-left:2px solid var(--sage);
+  border-top:1px solid var(--border);
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  border-radius:var(--r-m); padding:16px 18px;
+  margin-bottom:16px;
+  display:flex; gap:13px;
+}
+.ins-ico { font-size:1.15rem; flex-shrink:0; margin-top:1px; }
+.ins-head { font-size:.72rem; font-weight:500; color:var(--sage); letter-spacing:.1em; text-transform:uppercase; margin-bottom:5px; }
+.ins-body { font-size:.8rem; color:var(--ivory-muted); line-height:1.7; font-weight:300; }
+
+/* ── Section label ── */
+.sec-lbl {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.1rem; font-weight:400;
+  color:var(--ivory-dim); letter-spacing:.04em;
+  margin-bottom:12px; padding-left:2px;
+}
+
+/* ── Check-in metrics ── */
+.metric { margin-bottom:24px; }
+.metric:last-child { margin-bottom:0; }
+
+.m-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; }
+.m-label { display:flex; align-items:center; gap:8px; font-size:.87rem; font-weight:400; color:var(--ivory-dim); }
+.m-ico { font-size:.95rem; }
+.m-score {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.6rem; font-weight:300;
+  color:var(--rose-bright); min-width:20px; text-align:right; line-height:1;
+}
+.m-caption { font-size:.72rem; color:var(--ivory-muted); font-weight:300; margin-bottom:10px; }
+
+input[type=range] {
+  -webkit-appearance:none; width:100%;
+  height:4px; border-radius:2px;
+  background:var(--ink-3); outline:none; cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none;
+  width:22px; height:22px; border-radius:50%;
+  background:linear-gradient(145deg, var(--rose-bright), var(--rose-dim));
+  cursor:pointer;
+  box-shadow:0 2px 12px rgba(196,125,99,.45), 0 0 0 3px var(--ink-2), 0 0 0 4px rgba(196,125,99,.2);
+  transition:transform .15s, box-shadow .15s;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  transform:scale(1.18);
+  box-shadow:0 4px 16px rgba(196,125,99,.55), 0 0 0 3px var(--ink-2), 0 0 0 5px rgba(196,125,99,.25);
+}
+
+.m-ends { display:flex; justify-content:space-between; margin-top:5px; font-size:.68rem; color:var(--ivory-muted); font-weight:300; }
+
+/* divider between metrics */
+.metric + .metric { border-top:1px solid var(--border); padding-top:22px; }
+
+/* ── Protocol list ── */
+.proto-item {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+  cursor:pointer; transition:all .15s;
+}
+.proto-item:last-child { border-bottom:none; padding-bottom:0; }
+.proto-item:first-child { padding-top:0; }
+
+.p-chk {
+  width:22px; height:22px; border-radius:7px;
+  border:1px solid rgba(245,237,224,.14);
+  background:var(--ink-3);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:1px;
+  transition:all .2s;
+}
+.proto-item.done .p-chk {
+  background:var(--sage);
+  border-color:var(--sage);
+  box-shadow:0 0 12px rgba(110,158,122,.3);
+}
+.p-tick { font-size:11px; color:white; opacity:0; transition:opacity .15s; font-weight:600; }
+.proto-item.done .p-tick { opacity:1; }
+
+.p-text {}
+.p-title { font-size:.87rem; font-weight:400; color:var(--ivory-dim); margin-bottom:3px; transition:color .15s; }
+.p-desc { font-size:.74rem; color:var(--ivory-muted); font-weight:300; line-height:1.55; }
+.proto-item.done .p-title { color:var(--sage); }
+.proto-item:hover .p-title { color:var(--ivory); }
+
+/* ── Save button ── */
+.save-btn {
+  width:100%; border:none;
+  background:linear-gradient(145deg, #c98468, #b87055);
+  color:var(--ivory); padding:18px;
+  border-radius:var(--r-m);
+  font-family:'DM Sans', sans-serif;
+  font-size:.95rem; font-weight:500;
+  cursor:pointer; letter-spacing:.03em;
+  box-shadow:0 8px 32px rgba(196,125,99,.3), inset 0 1px 0 rgba(255,255,255,.08);
+  transition:all .2s; margin-bottom:24px;
+  position:relative; overflow:hidden;
+}
+.save-btn::after {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.06) 0%, transparent 100%);
+}
+.save-btn:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(196,125,99,.4); }
+.save-btn:active { transform:scale(.98); }
+
+/* ═══════════════════════════════════════
+   PROGRESS TAB
+═══════════════════════════════════════ */
+.score-card {
+  background:linear-gradient(145deg, #1a1410, #201810);
+  border:1px solid var(--border);
+  border-radius:var(--r-l); padding:26px 22px;
+  margin-bottom:16px; text-align:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.4);
+  position:relative; overflow:hidden;
+}
+.score-card::before {
+  content:'';
+  position:absolute; top:-60px; left:50%;
+  transform:translateX(-50%);
+  width:260px; height:200px;
+  background:radial-gradient(ellipse, rgba(176,141,158,.1) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.sc-lbl {
+  font-size:.7rem; font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ivory-muted); margin-bottom:18px;
+}
+
+.ring-wrap {
+  width:130px; height:130px;
+  margin:0 auto 16px; position:relative;
+}
+.ring-wrap svg { transform:rotate(-90deg); }
+.ring-num {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Cormorant Garamond', serif;
+  font-size:2.4rem; font-weight:300; color:var(--ivory);
+  line-height:1;
+}
+.ring-unit {
+  font-family:'DM Sans', serif;
+  font-size:.7rem; color:var(--ivory-muted);
+  display:block; margin-top:2px;
+}
+
+.sc-desc { font-size:.82rem; color:var(--ivory-muted); line-height:1.7; font-weight:300; max-width:300px; margin:0 auto; }
+.sc-desc strong { color:var(--ivory); font-weight:400; }
+
+/* Chart card */
+.chart-card {
+  background:var(--ink-2);
+  border:1px solid var(--border);
+  border-radius:var(--r-l); padding:22px;
+  margin-bottom:16px;
+  box-shadow:0 4px 24px rgba(0,0,0,.3);
+}
+
+.c-tabs { display:flex; gap:7px; margin-bottom:18px; }
+.c-tab {
+  flex:1; padding:8px 4px;
+  background:transparent; border:1px solid var(--border);
+  border-radius:10px; font-family:'DM Sans', sans-serif;
+  font-size:.72rem; color:var(--ivory-muted);
+  cursor:pointer; transition:all .2s; text-align:center;
+}
+.c-tab.on { background:rgba(196,125,99,.12); border-color:rgba(196,125,99,.3); color:var(--rose-bright); font-weight:500; }
+
+.chart-area { height:150px; position:relative; }
+canvas#chart { width:100% !important; height:100% !important; }
+.chart-void {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; color:var(--ivory-muted); font-size:.8rem; text-align:center; font-weight:300;
+}
+.cv-ico { font-size:1.8rem; opacity:.25; }
+
+/* Week map */
+.wmap-card {
+  background:var(--ink-2);
+  border:1px solid var(--border);
+  border-radius:var(--r-l); padding:22px;
+  margin-bottom:16px;
+}
+.wmap { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; margin-bottom:14px; }
+.wm {
+  border:1px solid var(--border);
+  border-radius:12px; padding:10px 6px;
+  text-align:center;
+}
+.wm.now {
+  background:rgba(196,125,99,.07);
+  border-color:rgba(196,125,99,.25);
+}
+.wm-n { font-size:.65rem; color:var(--ivory-muted); margin-bottom:4px; }
+.wm-t { font-size:.67rem; font-weight:500; color:var(--ivory-muted); margin-bottom:5px; line-height:1.3; }
+.wm.now .wm-t { color:var(--rose-bright); }
+.wm-d { width:5px; height:5px; border-radius:50%; background:rgba(245,237,224,.1); margin:0 auto; }
+.wm.now .wm-d { background:var(--rose-bright); box-shadow:0 0 6px rgba(196,125,99,.5); }
+.wm-focus {
+  background:rgba(196,125,99,.07);
+  border:1px solid rgba(196,125,99,.15);
+  border-radius:12px; padding:14px 16px;
+  font-size:.8rem; color:var(--ivory-muted); line-height:1.7;
+}
+.wm-focus strong { display:block; color:var(--rose-bright); font-weight:500; margin-bottom:4px; }
+
+/* ═══════════════════════════════════════
+   HISTORY TAB
+═══════════════════════════════════════ */
+.hist-list { display:grid; gap:8px; }
+.hi {
+  background:var(--ink-2);
+  border:1px solid var(--border);
+  border-radius:var(--r-s); padding:13px 16px;
+  display:flex; align-items:center; gap:14px;
+}
+.hi-date { font-size:.72rem; color:var(--ivory-muted); min-width:52px; font-weight:300; }
+.hi-scores { flex:1; display:flex; gap:6px; flex-wrap:wrap; }
+.hi-s {
+  background:rgba(245,237,224,.05);
+  border:1px solid var(--border);
+  border-radius:7px; padding:3px 8px;
+  font-size:.7rem; color:var(--ivory-dim);
+}
+.hi-total {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.4rem; font-weight:300; color:var(--rose-bright);
+}
+
+/* ═══════════════════════════════════════
+   SETTINGS TAB
+═══════════════════════════════════════ */
+.set-section { margin-bottom:22px; }
+.set-lbl {
+  font-size:.7rem; font-weight:500; color:var(--ivory-muted);
+  text-transform:uppercase; letter-spacing:.14em; margin-bottom:8px;
+}
+.set-row {
+  background:var(--ink-2); border:1px solid var(--border);
+  border-radius:14px; padding:14px 18px;
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:7px;
+}
+.sr-lbl { display:flex; align-items:center; gap:9px; font-size:.87rem; font-weight:400; color:var(--ivory-dim); }
+.sr-ico { font-size:.95rem; }
+.sr-val { font-size:.8rem; color:var(--ivory-muted); font-weight:300; }
+
+.danger-btn {
+  width:100%; background:transparent;
+  border:1px solid rgba(200,80,80,.2);
+  color:rgba(200,100,100,.7); padding:13px;
+  border-radius:13px; font-family:'DM Sans', sans-serif;
+  font-size:.87rem; cursor:pointer; transition:all .2s;
+}
+.danger-btn:hover { background:rgba(200,80,80,.06); border-color:rgba(200,80,80,.35); }
+
+/* ═══════════════════════════════════════
+   BOTTOM NAV
+═══════════════════════════════════════ */
+.bnav {
+  position:fixed; bottom:0; left:0; right:0;
+  background:rgba(13,10,8,.95);
+  backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  border-top:1px solid var(--border);
+  display:flex;
+  padding:8px 0 max(8px, env(safe-area-inset-bottom));
+  z-index:60;
+}
+.bni {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; gap:3px; padding:6px 8px;
+  cursor:pointer; background:none; border:none;
+  font-family:'DM Sans', sans-serif; transition:all .2s;
+}
+.bni-ico { font-size:1.3rem; line-height:1; transition:transform .2s; }
+.bni-lbl { font-size:10px; color:var(--ivory-muted); font-weight:300; }
+.bni.on .bni-lbl { color:var(--rose-bright); font-weight:500; }
+.bni.on .bni-ico { transform:scale(1.1); }
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+.toast {
+  position:fixed; bottom:80px; left:50%;
+  transform:translateX(-50%) translateY(60px);
+  background:var(--ink-3); color:var(--ivory);
+  border:1px solid var(--border-hi);
+  padding:12px 22px; border-radius:14px;
+  font-size:.85rem; white-space:nowrap;
+  transition:transform .3s cubic-bezier(.22,1,.36,1), opacity .3s;
+  z-index:200; opacity:0;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+}
+.toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+/* ═══════════════════════════════════════
+   VOID
+═══════════════════════════════════════ */
+.void {
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:52px 24px; gap:10px;
+  text-align:center; color:var(--ivory-muted);
+  font-size:.83rem; font-weight:300;
+}
+.void-ico { font-size:2rem; opacity:.2; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:480px){
+  #welcome, #onboarding { padding-left:20px; padding-right:20px; }
+  .app-body { padding-left:14px; padding-right:14px; }
+  .wmap { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     WELCOME SCREEN
+══════════════════════════════════════ -->
+<div id="welcome" class="screen active">
+  <div class="w-orb w-orb-1"></div>
+  <div class="w-orb w-orb-2"></div>
+  <div class="w-inner">
+    <div class="w-monogram"><span class="w-monogram-letter">H</span></div>
+    <div class="w-label">Hormone Reset Tracker</div>
+
+    <h1>
+      Your body<br>
+      didn't fail you.<br>
+      It <em>changed.</em>
+    </h1>
+
+    <p class="w-sub">
+      The first daily protocol tracker built for the <em>metabolic shift after 40</em> — cortisol, insulin, sleep, and energy. Scientifically grounded. Three minutes a day.
+    </p>
+
+    <div class="w-trial">
+      <span class="w-trial-dot"></span>
+      <strong>3 days free</strong>
+      <span style="color:var(--ivory-muted)">·</span>
+      then $19 / month
+      <span style="color:var(--ivory-muted)">·</span>
+      cancel anytime
+    </div>
+
+    <button class="btn-primary" onclick="goOB()">Begin My Free 3 Days →</button>
+    <button class="btn-ghost" onclick="loginX()">I already have an account</button>
+
+    <div class="w-stats">
+      <div class="ws"><span class="ws-n">30</span><span class="ws-l">day protocol</span></div>
+      <div class="ws"><span class="ws-n">4</span><span class="ws-l">biomarkers</span></div>
+      <div class="ws"><span class="ws-n">3 min</span><span class="ws-l">daily check-in</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ONBOARDING
+══════════════════════════════════════ -->
+<div id="onboarding" class="screen">
+  <div class="ob-wrap">
+    <div class="ob-track"><div class="ob-track-fill" id="obF" style="width:25%"></div></div>
+
+    <!-- S1 -->
+    <div class="ob-step active" id="obS1">
+      <div class="ob-num">Step 1 of 4</div>
+      <h2>What's your first name?</h2>
+      <p class="ob-hint">We'll personalize your daily check-in and protocol insights around your journey.</p>
+      <input class="field" id="inName" placeholder="Your first name…" />
+      <div class="ob-nav"><button class="ob-next" onclick="obN(1)">Continue →</button></div>
+    </div>
+
+    <!-- S2 -->
+    <div class="ob-step" id="obS2">
+      <div class="ob-num">Step 2 of 4</div>
+      <h2>How long has your body felt different?</h2>
+      <p class="ob-hint">We'll calibrate the intensity of your 30-day metabolic reset accordingly.</p>
+      <div class="ob-opts">
+        <button class="ob-opt" onclick="obSel(this,'d','<6')"><span class="oi">🌱</span><div class="ot"><strong>Less than 6 months</strong><span>Early hormonal shift — ideal time to reset</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'d','6-12')"><span class="oi">🌿</span><div class="ot"><strong>6 months to 1 year</strong><span>Patterns forming — the protocol will re-calibrate them</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'d','1-3')"><span class="oi">🌳</span><div class="ot"><strong>1 to 3 years</strong><span>Deeper reset needed — you'll feel big changes</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'d','>3')"><span class="oi">🏔️</span><div class="ot"><strong>More than 3 years</strong><span>Long-term resistance — this protocol was built for you</span></div></button>
+      </div>
+      <div class="ob-nav"><button class="ob-back" onclick="obP(2)">←</button><button class="ob-next" onclick="obN(2)">Continue →</button></div>
+    </div>
+
+    <!-- S3 -->
+    <div class="ob-step" id="obS3">
+      <div class="ob-num">Step 3 of 4</div>
+      <h2>What bothers you most right now?</h2>
+      <p class="ob-hint">Your first week of the protocol will be focused on your primary concern.</p>
+      <div class="ob-opts">
+        <button class="ob-opt" onclick="obSel(this,'s','weight')"><span class="oi">⚖️</span><div class="ot"><strong>Unexplained weight gain</strong><span>Especially around the abdomen — visceral fat</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'s','sleep')"><span class="oi">🌙</span><div class="ot"><strong>Poor sleep / waking at 3am</strong><span>Cortisol spike disrupting deep rest</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'s','energy')"><span class="oi">⚡</span><div class="ot"><strong>Low energy / constant fatigue</strong><span>Even after a full night of sleep</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'s','mood')"><span class="oi">🌊</span><div class="ot"><strong>Mood swings / brain fog</strong><span>Feeling unlike yourself</span></div></button>
+      </div>
+      <div class="ob-nav"><button class="ob-back" onclick="obP(3)">←</button><button class="ob-next" onclick="obN(3)">Continue →</button></div>
+    </div>
+
+    <!-- S4 -->
+    <div class="ob-step" id="obS4">
+      <div class="ob-num">Step 4 of 4</div>
+      <h2>What does success look like in 30 days?</h2>
+      <p class="ob-hint">Set your intention. We'll show you exactly how close you are, every single day.</p>
+      <div class="ob-opts">
+        <button class="ob-opt" onclick="obSel(this,'g','lighter')"><span class="oi">✨</span><div class="ot"><strong>Feel lighter and less bloated</strong><span>Reduce visceral fat, preserve muscle</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'g','sleep')"><span class="oi">😴</span><div class="ot"><strong>Sleep through the night again</strong><span>No more 3am wake-ups</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'g','energy')"><span class="oi">🌟</span><div class="ot"><strong>Have consistent energy all day</strong><span>No afternoon crashes</span></div></button>
+        <button class="ob-opt" onclick="obSel(this,'g','understand')"><span class="oi">🧬</span><div class="ot"><strong>Finally understand my body</strong><span>Know what's happening and why</span></div></button>
+      </div>
+      <div class="ob-nav"><button class="ob-back" onclick="obP(4)">←</button><button class="ob-next" onclick="obFin()">Start My Reset →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     APP
+══════════════════════════════════════ -->
+<div id="app" class="screen">
+
+  <div class="app-bar">
+    <div class="app-wm">Hormone <span>Reset</span></div>
+    <div class="app-badges">
+      <div class="badge badge-day" id="bDay">Day 1</div>
+      <div class="badge badge-fire" id="bFire">🔥 0</div>
+    </div>
+  </div>
+
+  <div class="app-body">
+
+    <!-- ── TODAY ── -->
+    <div class="tab-pane active" id="tp-today">
+
+      <div class="trial-bar" id="trialBar">
+        <div class="tb-t"><strong id="tbTitle">✦ 3-day free trial</strong><span id="tbSub">Upgrade to continue your 30-day reset</span></div>
+        <button class="tb-btn" onclick="alert('Stripe checkout — coming soon!')">Upgrade →</button>
+      </div>
+
+      <div class="greet-card">
+        <div class="greet-name">Good morning, <em id="gName">—</em></div>
+        <div class="greet-sub" id="gSub">Your body is ready to reset. Let's check in.</div>
+        <div class="week-chip">
+          <div class="wc-pip"></div>
+          <div class="wc-text" id="wkText"><strong>Week 1:</strong> Sleep & Cortisol Foundation</div>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="ins-ico">🌿</div>
+        <div>
+          <div class="ins-head">Protocol Insight</div>
+          <div class="ins-body" id="insBody">Cortisol peaks 30–45 min after waking. Sunlight in this window sends a powerful reset signal to your circadian rhythm and directly improves insulin sensitivity for the rest of the day.</div>
+        </div>
+      </div>
+
+      <div class="sec-lbl">Daily Check-In</div>
+
+      <div class="card">
+        <div class="metric">
+          <div class="m-row">
+            <div class="m-label"><span class="m-ico">😴</span> Sleep Quality</div>
+            <div class="m-score" id="vS">5</div>
+          </div>
+          <div class="m-caption">How did you sleep last night?</div>
+          <input type="range" min="1" max="10" value="5" id="rS" oninput="mv('vS','rS')">
+          <div class="m-ends"><span>Terrible</span><span>Perfect</span></div>
+        </div>
+        <div class="metric">
+          <div class="m-row">
+            <div class="m-label"><span class="m-ico">⚡</span> Energy Level</div>
+            <div class="m-score" id="vE">5</div>
+          </div>
+          <div class="m-caption">How's your energy right now?</div>
+          <input type="range" min="1" max="10" value="5" id="rE" oninput="mv('vE','rE')">
+          <div class="m-ends"><span>Exhausted</span><span>Vibrant</span></div>
+        </div>
+        <div class="metric">
+          <div class="m-row">
+            <div class="m-label"><span class="m-ico">🍽️</span> Hunger Control</div>
+            <div class="m-score" id="vH">5</div>
+          </div>
+          <div class="m-caption">Can you go 4–5 hours between meals comfortably?</div>
+          <input type="range" min="1" max="10" value="5" id="rH" oninput="mv('vH','rH')">
+          <div class="m-ends"><span>Constant cravings</span><span>Easy control</span></div>
+        </div>
+        <div class="metric">
+          <div class="m-row">
+            <div class="m-label"><span class="m-ico">🧠</span> Mental Clarity</div>
+            <div class="m-score" id="vM">5</div>
+          </div>
+          <div class="m-caption">Brain fog or clear thinking today?</div>
+          <input type="range" min="1" max="10" value="5" id="rM" oninput="mv('vM','rM')">
+          <div class="m-ends"><span>Total fog</span><span>Crystal clear</span></div>
+        </div>
+      </div>
+
+      <div class="sec-lbl">Today's Protocol</div>
+
+      <div class="card" style="padding:22px">
+        <div class="proto-item" onclick="tp(this)">
+          <div class="p-chk"><span class="p-tick">✓</span></div>
+          <div class="p-text"><div class="p-title">☀️ Morning sunlight — 20 min before 10am</div><div class="p-desc">Resets cortisol rhythm. Critical for insulin sensitivity throughout the day.</div></div>
+        </div>
+        <div class="proto-item" onclick="tp(this)">
+          <div class="p-chk"><span class="p-tick">✓</span></div>
+          <div class="p-text"><div class="p-title">🥚 Protein-first breakfast — 30–40g</div><div class="p-desc">Stabilizes insulin. Prevents energy crash by 11am.</div></div>
+        </div>
+        <div class="proto-item" onclick="tp(this)">
+          <div class="p-chk"><span class="p-tick">✓</span></div>
+          <div class="p-text"><div class="p-title">🚶 10-min walk after largest meal</div><div class="p-desc">Clears glucose from bloodstream. Reduces insulin spike by ~30%.</div></div>
+        </div>
+        <div class="proto-item" onclick="tp(this)">
+          <div class="p-chk"><span class="p-tick">✓</span></div>
+          <div class="p-text"><div class="p-title">📵 No screens 60 min before bed</div><div class="p-desc">Blue light suppresses melatonin and keeps cortisol elevated overnight.</div></div>
+        </div>
+        <div class="proto-item" onclick="tp(this)">
+          <div class="p-chk"><span class="p-tick">✓</span></div>
+          <div class="p-text"><div class="p-title">💊 Magnesium glycinate — 400mg at night</div><div class="p-desc">Activates GABA. Reduces cortisol. Improves deep sleep architecture.</div></div>
+        </div>
+      </div>
+
+      <button class="save-btn" onclick="saveCI()">Save Today's Check-In ✓</button>
+    </div>
+
+    <!-- ── PROGRESS ── -->
+    <div class="tab-pane" id="tp-progress">
+
+      <div class="score-card">
+        <div class="sc-lbl">Hormone Balance Score</div>
+        <div class="ring-wrap">
+          <svg viewBox="0 0 130 130" width="130" height="130">
+            <circle cx="65" cy="65" r="52" fill="none" stroke="rgba(245,237,224,.07)" stroke-width="8"/>
+            <circle cx="65" cy="65" r="52" fill="none" stroke="#b08d9e" stroke-width="8"
+              stroke-dasharray="327" id="ringC" stroke-dashoffset="327"
+              stroke-linecap="round" style="transition:stroke-dashoffset .8s cubic-bezier(.22,1,.36,1)"/>
+          </svg>
+          <div class="ring-num" id="ringN"><span style="font-size:2.4rem">—</span><span class="ring-unit">/ 100</span></div>
+        </div>
+        <div class="sc-desc" id="scDesc">Complete your first check-in to see your <strong>Hormone Balance Score</strong> and begin tracking your 30-day reset.</div>
+      </div>
+
+      <div class="chart-card">
+        <div class="sec-lbl">30-Day Evolution</div>
+        <div class="c-tabs">
+          <button class="c-tab on" onclick="sChart('sleep',this)">Sleep</button>
+          <button class="c-tab" onclick="sChart('energy',this)">Energy</button>
+          <button class="c-tab" onclick="sChart('hunger',this)">Hunger</button>
+          <button class="c-tab" onclick="sChart('mood',this)">Clarity</button>
+        </div>
+        <div class="chart-area">
+          <canvas id="chart"></canvas>
+          <div class="chart-void" id="cVoid"><div class="cv-ico">📈</div>Your graph appears after Day 1.<br>Complete today's check-in.</div>
+        </div>
+      </div>
+
+      <div class="wmap-card">
+        <div class="sec-lbl">Protocol Map</div>
+        <div class="wmap">
+          <div class="wm now"><div class="wm-n">Week 1</div><div class="wm-t">Sleep & Cortisol</div><div class="wm-d"></div></div>
+          <div class="wm"><div class="wm-n">Week 2</div><div class="wm-t">Insulin Reset</div><div class="wm-d"></div></div>
+          <div class="wm"><div class="wm-n">Week 3</div><div class="wm-t">Deep Optimize</div><div class="wm-d"></div></div>
+          <div class="wm"><div class="wm-n">Week 4</div><div class="wm-t">Sustain</div><div class="wm-d"></div></div>
+        </div>
+        <div class="wm-focus">
+          <strong>📍 Week 1 — Foundation</strong>
+          Consistent sleep schedule (±30 min), morning sunlight, and protein-first meals. These three shifts measurably move your cortisol curve within 7 days.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── HISTORY ── -->
+    <div class="tab-pane" id="tp-history">
+      <div class="sec-lbl">Check-In History</div>
+      <div class="hist-list" id="histL">
+        <div class="void"><div class="void-ico">📋</div>Your history appears after your first check-in.</div>
+      </div>
+    </div>
+
+    <!-- ── SETTINGS ── -->
+    <div class="tab-pane" id="tp-settings">
+      <div class="sec-lbl">Your Profile</div>
+      <div class="set-section">
+        <div class="set-lbl">Account</div>
+        <div class="set-row"><div class="sr-lbl"><span class="sr-ico">👤</span>Name</div><div class="sr-val" id="setN">—</div></div>
+        <div class="set-row"><div class="sr-lbl"><span class="sr-ico">📅</span>Start Date</div><div class="sr-val" id="setS">—</div></div>
+        <div class="set-row"><div class="sr-lbl"><span class="sr-ico">🎯</span>Primary Goal</div><div class="sr-val" id="setG">—</div></div>
+      </div>
+      <div class="set-section">
+        <div class="set-lbl">Subscription</div>
+        <div class="set-row"><div class="sr-lbl"><span class="sr-ico">⏳</span>Status</div><div class="sr-val" id="setT">Free Trial</div></div>
+        <button class="btn-primary" style="margin-top:8px" onclick="alert('Stripe checkout — coming soon!')">Upgrade to Full Access — $19 / month</button>
+      </div>
+      <div class="set-section">
+        <div class="set-lbl">Data</div>
+        <button class="danger-btn" onclick="resetAll()">Reset all data & start over</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bnav">
+    <button class="bni on" onclick="goTab('today',this)"><span class="bni-ico">✦</span><span class="bni-lbl">Today</span></button>
+    <button class="bni" onclick="goTab('progress',this)"><span class="bni-ico">📈</span><span class="bni-lbl">Progress</span></button>
+    <button class="bni" onclick="goTab('history',this)"><span class="bni-ico">📋</span><span class="bni-lbl">History</span></button>
+    <button class="bni" onclick="goTab('settings',this)"><span class="bni-ico">⚙️</span><span class="bni-lbl">Settings</span></button>
+  </nav>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ══ STATE ══ */
+let U = JSON.parse(localStorage.getItem('h_u')||'null');
+let CI= JSON.parse(localStorage.getItem('h_ci')||'[]');
+let sel={}, curC='sleep';
+
+const INSIGHTS=[
+  "Cortisol peaks 30–45 min after waking. Sunlight in this window sends a powerful reset signal to your circadian rhythm and directly improves insulin sensitivity for the rest of the day.",
+  "Eating protein first at every meal blunts the insulin response to carbohydrates by up to 35% — the single most important nutritional shift for metabolic reset after 40.",
+  "A 10-minute walk after your largest meal can clear glucose from your bloodstream as effectively as some medications. Zero side effects.",
+  "Waking at 3am is often a cortisol spike, not a sleep disorder. Stabilizing blood sugar before bed and reducing evening light resolves this in most women within 2 weeks.",
+  "Magnesium deficiency affects over 70% of women over 40. It's required for insulin receptor function, cortisol regulation, and deep sleep — three things you're actively resetting.",
+  "Restricting calories too aggressively raises cortisol by 15–25% within 72 hours. Your body reads restriction as a threat and holds on to fat. This protocol works with your biology.",
+  "Blue light from screens suppresses melatonin for up to 3 hours and keeps cortisol elevated overnight — directly blocking the fat-burning that only happens during deep sleep.",
+  "Muscle is your metabolic engine. Resistance training 2–3× per week increases insulin sensitivity more than any supplement on the market.",
+  "The 4–5 hour gap between meals allows insulin to return to baseline, enabling fat-burning mode between each eating window.",
+  "Chronic stress keeps cortisol systemically elevated. Even 10 minutes of slow nasal breathing per day measurably reduces cortisol output within one week.",
+];
+
+/* ══ INIT ══ */
+window.onload=()=>{ if(U) openApp(); };
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* ══ ONBOARDING ══ */
+function goOB(){ show('onboarding'); }
+function loginX(){ U?openApp():toast('No account found. Please start your free trial.'); }
+
+function obSel(btn,k,v){
+  btn.closest('.ob-opts').querySelectorAll('.ob-opt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on'); sel[k]=v;
+}
+
+function obN(s){
+  if(s===1){ const n=document.getElementById('inName').value.trim(); if(!n){toast('Please enter your name 💕');return;} sel.name=n; }
+  if(s===2&&!sel.d){toast('Please choose an option');return;}
+  if(s===3&&!sel.s){toast('Please choose an option');return;}
+  document.getElementById('obS'+s).classList.remove('active');
+  document.getElementById('obS'+(s+1)).classList.add('active');
+  document.getElementById('obF').style.width=((s+1)*25)+'%';
+}
+
+function obP(s){
+  document.getElementById('obS'+s).classList.remove('active');
+  document.getElementById('obS'+(s-1)).classList.add('active');
+  document.getElementById('obF').style.width=((s-1)*25)+'%';
+}
+
+function obFin(){
+  if(!sel.g){toast('Please choose your goal');return;}
+  U={name:sel.name,d:sel.d,s:sel.s,g:sel.g,start:new Date().toISOString(),trial:3};
+  localStorage.setItem('h_u',JSON.stringify(U));
+  openApp();
+}
+
+/* ══ APP ══ */
+function openApp(){ show('app'); refreshUI(); renderHist(); refreshProg(); }
+
+function dayN(){ return Math.min(30,Math.floor((Date.now()-new Date(U.start))/86400000)+1); }
+
+function streak(){
+  if(!CI.length) return 0;
+  let s=0, today=new Date(); today.setHours(0,0,0,0);
+  for(let i=CI.length-1;i>=0;i--){
+    const d=new Date(CI[i].date); d.setHours(0,0,0,0);
+    if(Math.floor((today-d)/86400000)===s) s++;
+    else break;
+  }
+  return s;
+}
+
+function refreshUI(){
+  if(!U) return;
+  const dn=dayN();
+  document.getElementById('bDay').textContent='Day '+dn;
+  document.getElementById('bFire').textContent='🔥 '+streak();
+  document.getElementById('gName').textContent=U.name;
+  document.getElementById('setN').textContent=U.name;
+  document.getElementById('setS').textContent=new Date(U.start).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const gL={lighter:'Feel lighter & less bloated',sleep:'Sleep through the night',energy:'Consistent energy all day',understand:'Understand my body'};
+  document.getElementById('setG').textContent=gL[U.g]||'—';
+  const dl=U.trial-(dn-1);
+  if(dl>0){
+    document.getElementById('tbTitle').textContent='✦ '+dl+' day'+(dl>1?'s':'')+' left in your free trial';
+    document.getElementById('tbSub').textContent='Upgrade to keep your 30-day progress';
+    document.getElementById('setT').textContent=dl+' day'+(dl>1?'s':'')+' remaining';
+  } else {
+    document.getElementById('tbTitle').textContent='⚠️ Free trial ended';
+    document.getElementById('tbSub').textContent='Upgrade now to keep your data';
+    document.getElementById('setT').textContent='Expired';
+  }
+  const wk=Math.min(4,Math.ceil(dn/7));
+  const wL=['Sleep & Cortisol Foundation','Insulin & Meal Structure','Deep Metabolic Optimization','Evaluate & Sustain'];
+  document.getElementById('wkText').innerHTML='<strong>Week '+wk+':</strong> '+wL[wk-1];
+  const h=new Date().getHours();
+  const tod=h<12?'morning':h<17?'afternoon':'evening';
+  const subs={morning:"Your body is ready to reset. Let's check in.",afternoon:"Afternoon check-in. How has your energy been?",evening:"Evening reflection. How did today go?"};
+  document.getElementById('gSub').textContent=subs[tod];
+  document.getElementById('insBody').textContent=INSIGHTS[(dn-1)%INSIGHTS.length];
+}
+
+/* ══ CHECK-IN ══ */
+function mv(vid,rid){
+  const v=document.getElementById(rid).value;
+  document.getElementById(vid).textContent=v;
+  const pct=((v-1)/9)*100;
+  document.getElementById(rid).style.background=
+    `linear-gradient(to right,#c47d63 ${pct}%,rgba(38,30,24,.8) ${pct}%)`;
+}
+
+function tp(el){ el.classList.toggle('done'); }
+
+function saveCI(){
+  const s=+document.getElementById('rS').value,
+        e=+document.getElementById('rE').value,
+        h=+document.getElementById('rH').value,
+        m=+document.getElementById('rM').value;
+  CI.push({date:new Date().toISOString(),sleep:s,energy:e,hunger:h,mood:m,
+    proto:[...document.querySelectorAll('.proto-item.done')].length,
+    score:Math.round((s+e+h+m)/4*10)});
+  localStorage.setItem('h_ci',JSON.stringify(CI));
+  toast('✓ Saved. Keep going, '+U.name+' 💕');
+  refreshUI(); renderHist(); refreshProg();
+  ['S','E','H','M'].forEach(x=>{
+    document.getElementById('r'+x).value=5;
+    mv('v'+x,'r'+x);
+    document.getElementById('r'+x).style.background='';
+  });
+  document.querySelectorAll('.proto-item').forEach(p=>p.classList.remove('done'));
+}
+
+/* ══ PROGRESS ══ */
+function refreshProg(){
+  if(!CI.length){ document.getElementById('ringN').innerHTML='<span style="font-size:2.4rem">—</span><span class="ring-unit">/ 100</span>'; return; }
+  const last=CI[CI.length-1], sc=last.score;
+  document.getElementById('ringN').innerHTML='<span style="font-size:2.4rem">'+sc+'</span><span class="ring-unit">/ 100</span>';
+  document.getElementById('ringC').style.strokeDashoffset=327-(sc/100)*327;
+  const d=sc<40?'Your metabolic resistance is still high. Focusing on sleep and cortisol this week will shift this fastest.'
+    :sc<60?'Early reset underway. Sleep improvements usually appear first — stay with the protocol.'
+    :sc<80?'Good progress. Your hormonal signals are stabilizing. Energy and hunger control will follow.'
+    :'Excellent hormonal balance. Your body is responding beautifully. Maintain this streak.';
+  document.getElementById('scDesc').textContent=d;
+  drawChart(curC);
+}
+
+function sChart(m,btn){
+  curC=m;
+  document.querySelectorAll('.c-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on'); drawChart(m);
+}
+
+function drawChart(metric){
+  const cv=document.getElementById('chart');
+  const vd=document.getElementById('cVoid');
+  if(!CI.length){vd.style.display='flex';return;}
+  vd.style.display='none';
+  const ctx=cv.getContext('2d');
+  const dpr=window.devicePixelRatio||1;
+  cv.width=cv.offsetWidth*dpr; cv.height=cv.offsetHeight*dpr;
+  ctx.scale(dpr,dpr);
+  const W=cv.offsetWidth,H=cv.offsetHeight;
+  ctx.clearRect(0,0,W,H);
+  const vals=CI.map(c=>c[metric]);
+  if(!vals.length) return;
+  const P=12,B=22;
+  const sx=(W-P*2)/Math.max(vals.length-1,1);
+  // grid lines
+  [2,4,6,8].forEach(v=>{
+    const y=H-B-((v-1)/9)*(H-B-P);
+    ctx.strokeStyle='rgba(245,237,224,.05)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(P,y); ctx.lineTo(W-P,y); ctx.stroke();
+  });
+  const grad=ctx.createLinearGradient(0,0,0,H);
+  grad.addColorStop(0,'rgba(196,125,99,.2)');
+  grad.addColorStop(1,'rgba(196,125,99,0)');
+  ctx.beginPath();
+  vals.forEach((v,i)=>{
+    const x=P+i*sx,y=H-B-((v-1)/9)*(H-B-P);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.lineTo(P+(vals.length-1)*sx,H-B);
+  ctx.lineTo(P,H-B); ctx.closePath();
+  ctx.fillStyle=grad; ctx.fill();
+  ctx.beginPath(); ctx.strokeStyle='#c47d63'; ctx.lineWidth=2; ctx.lineJoin='round';
+  vals.forEach((v,i)=>{const x=P+i*sx,y=H-B-((v-1)/9)*(H-B-P);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.stroke();
+  vals.forEach((v,i)=>{
+    const x=P+i*sx,y=H-B-((v-1)/9)*(H-B-P);
+    ctx.fillStyle='#c47d63'; ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()||'#0d0a08';
+    ctx.beginPath(); ctx.arc(x,y,1.8,0,Math.PI*2); ctx.fill();
+    const step=Math.max(1,Math.floor(vals.length/6));
+    if(i%step===0||i===vals.length-1){
+      ctx.fillStyle='rgba(200,180,154,.4)'; ctx.font='9px DM Sans,sans-serif'; ctx.textAlign='center';
+      ctx.fillText('D'+(i+1),x,H-5);
+    }
+  });
+}
+
+/* ══ HISTORY ══ */
+function renderHist(){
+  const el=document.getElementById('histL');
+  if(!CI.length){el.innerHTML='<div class="void"><div class="void-ico">📋</div>Your history appears after your first check-in.</div>';return;}
+  el.innerHTML=[...CI].reverse().map(c=>{
+    const d=new Date(c.date).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    return `<div class="hi">
+      <div class="hi-date">${d}</div>
+      <div class="hi-scores">
+        <div class="hi-s">😴 ${c.sleep}</div>
+        <div class="hi-s">⚡ ${c.energy}</div>
+        <div class="hi-s">🍽️ ${c.hunger}</div>
+        <div class="hi-s">🧠 ${c.mood}</div>
+      </div>
+      <div class="hi-total">${c.score}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ══ NAV ══ */
+function goTab(t,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.bni').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tp-'+t).classList.add('active');
+  btn.classList.add('on');
+  if(t==='progress') refreshProg();
+}
+
+/* ══ UTILS ══ */
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),3200);
+}
+
+function resetAll(){
+  if(confirm('Reset all data? This cannot be undone.')){
+    localStorage.clear(); U=null; CI=[];
+    show('welcome');
+  }
+}
+</script>
+</body>
+</html>
