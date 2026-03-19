@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Hormone Reset — The 30-Day Metabolic Protocol</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0J2JXVV0KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0J2JXVV0KN');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -854,7 +862,7 @@ canvas#chart { width:100% !important; height:100% !important; }
 
       <div class="trial-bar" id="trialBar">
         <div class="tb-t"><strong id="tbTitle">✦ 3-day free trial</strong><span id="tbSub">Upgrade to continue your 30-day reset</span></div>
-        <button class="tb-btn" onclick="window.location.href='https://hormonereset.lemonsqueezy.com/checkout/buy/0d45e489-8e9d-400f-88f6-0a3ac3e34d4c'">Upgrade →</button>
+        <button class="tb-btn" onclick="gtag('event','upgrade_click',{location:'banner'});window.location.href='https://hormonereset.lemonsqueezy.com/checkout/buy/0d45e489-8e9d-400f-88f6-0a3ac3e34d4c'">Upgrade →</button>
       </div>
 
       <div class="greet-card">
@@ -1009,7 +1017,7 @@ canvas#chart { width:100% !important; height:100% !important; }
       <div class="set-section">
         <div class="set-lbl">Subscription</div>
         <div class="set-row"><div class="sr-lbl"><span class="sr-ico">⏳</span>Status</div><div class="sr-val" id="setT">Free Trial</div></div>
-        <button class="btn-primary" style="margin-top:8px" onclick="window.location.href='https://hormonereset.lemonsqueezy.com/checkout/buy/0d45e489-8e9d-400f-88f6-0a3ac3e34d4c'">Upgrade to Full Access — $19 / month</button>
+        <button class="btn-primary" style="margin-top:8px" onclick="gtag('event','upgrade_click',{location:'banner'});window.location.href='https://hormonereset.lemonsqueezy.com/checkout/buy/0d45e489-8e9d-400f-88f6-0a3ac3e34d4c'">Upgrade to Full Access — $19 / month</button>
       </div>
       <div class="set-section">
         <div class="set-lbl">Data</div>
@@ -1085,6 +1093,7 @@ function obFin(){
   if(!sel.g){toast('Please choose your goal');return;}
   U={name:sel.name,d:sel.d,s:sel.s,g:sel.g,start:new Date().toISOString(),trial:3};
   localStorage.setItem('h_u',JSON.stringify(U));
+  gtag('event','onboarding_complete',{symptom:sel.s,goal:sel.g});
   openApp();
 }
 
@@ -1154,6 +1163,7 @@ function saveCI(){
     proto:[...document.querySelectorAll('.proto-item.done')].length,
     score:Math.round((s+e+h+m)/4*10)});
   localStorage.setItem('h_ci',JSON.stringify(CI));
+  gtag('event','checkin_saved',{day:dayN(),score:Math.round((s+e+h+m)/4*10)});
   toast('✓ Saved. Keep going, '+U.name+' 💕');
   refreshUI(); renderHist(); refreshProg();
   ['S','E','H','M'].forEach(x=>{
